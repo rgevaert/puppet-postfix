@@ -1,0 +1,8 @@
+postfix
+
+This is the postfix module with support for
+* Debian
+* Redhat/CentOS
+* Solaris
+
+We depend heavily on augeas for configuring postfix.
