@@ -1,4 +1,11 @@
-define postfix::master ($private = '-', $unprivileged = '-', $chroot = '-', $wakeup = '-', $limit = '-', $command = "${name}", $type )
+
+define postfix::master ($type,
+                        $private      = '-',
+                        $unprivileged = '-',
+                        $chroot       = '-',
+                        $wakeup       = '-',
+                        $limit        = '-',
+                        $command      = $name)
 {
   $service = $name
 
@@ -10,12 +17,12 @@ define postfix::master ($private = '-', $unprivileged = '-', $chroot = '-', $wak
   }
 
   if(versioncmp($::facterversion, '1.6') == -1 ) {
-    fail("facter version should at least be 1.6 because we need to be able to lookup augeasversion")
-  } 
+    fail('facter version < 1.6 not supported')
+  }
 
   augeas {
-    "${name}":
-        context => "/files/etc/postfix/master.cf",
+    $name:
+        context => '/files/etc/postfix/master.cf',
         changes => [
           "set ${service}/type ${type}",
           "set ${service}/private ${private}",

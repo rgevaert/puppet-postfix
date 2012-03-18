@@ -1,12 +1,12 @@
-define postfix::mailalias ($ensure = "present", $recipient)
+define postfix::mailalias ($recipient, $ensure = 'present')
 {
   include postfix::params
 
   mailalias {
-    "${name}":
+    $name:
       ensure    => $ensure,
-      recipient => "${recipient}",
-      target    => "${postfix::params::aliases_database}",
-      notify    => Exec["newaliases"],
+      recipient => $recipient,
+      target    => $postfix::params::aliases_database,
+      notify    => Exec['newaliases'],
   }
 }

@@ -1,24 +1,24 @@
 class postfix::install
 {
   package {
-    "${postfix::params::postfix_package}":
-      provider => "${postfix::params::postfix_package_provider}",
-      ensure   => installed;
+    $postfix::params::postfix_package:
+      ensure   => installed,
+      provider => $postfix::params::postfix_package_provider;
   }
 
-  if("${postfix::params::postfix_ldap_package}" != '')
+  if($postfix::params::postfix_ldap_package != '')
   {
     package {
-      "${postfix::params::postfix_ldap_package}":
-        provider => "${postfix::params::postfix_package_provider}",
-        ensure   => installed;
+      $postfix::params::postfix_ldap_package:
+        ensure   => installed,
+        provider => $postfix::params::postfix_package_provider;
     }
   }
 
-  if("${postfix::params::mailx_package}" != '')
+  if($postfix::params::mailx_package != '')
   {
     package {
-      "${postfix::params::mailx_package}":
+      $postfix::params::mailx_package:
         ensure => installed;
     }
   }
