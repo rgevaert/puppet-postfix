@@ -1,5 +1,11 @@
 class postfix::config
 {
+
+  $group_name = $::operatingsystem ? {
+    'Solaris' => 'sys',
+    default   => 'root'
+  }
+
   file {
     $postfix::params::data_directory:
       ensure => directory,
@@ -13,10 +19,7 @@ class postfix::config
       ensure => directory,
       mode   => '0755',
       owner  => root,
-      group  => $::operatingsystem ? {
-        'Solaris' => 'sys',
-        default   => 'root'
-      };
+      group  => $group_name;
   }
 
 

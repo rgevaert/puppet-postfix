@@ -3,16 +3,19 @@ define postfix::map ( $ensure   = present,
                       $template = "${name}.erb")
 {
   $mapname = $name
+
+  $map_notify = $ensure ? {
+    present => Exec["postmap /etc/postfix/${mapname}"],
+    absent  => undef,
+  }
+
   file {
     "/etc/postfix/${mapname}":
         ensure  => $ensure,
         owner   => root,
         group   => root,
         mode    => '0755',
-        notify  => $ensure ? {
-          present => Exec["postmap /etc/postfix/${mapname}"],
-          absent  => undef,
-        },
+        notify  => $map_notify,
         content => template($template);
   }
 

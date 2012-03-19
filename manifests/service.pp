@@ -1,9 +1,9 @@
 class postfix::service
 {
   service {
-    "postfix":
-      name => "${postfix::params::service_name}",
+    'postfix':
       ensure  => running,
+      name    => $postfix::params::service_name,
       enable  => true,
   }
 }
