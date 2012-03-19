@@ -30,7 +30,7 @@ define postfix::master ($type,
           "set ${service}/chroot ${chroot}",
           "set ${service}/wakeup ${wakeup}",
           "set ${service}/limit ${limit}",
-          "set ${service}/command ${command}",
+          "set ${service}/command '${command}'",
         ],
         notify  => Class['postfix::service'],
   }
