@@ -10,6 +10,26 @@ class postfix::params
     default                         => '',
   }
 
+  $postfix_pcre_package = $::operatingsystem ? {
+    /Ubuntu|Debian/                 => 'postfix-pcre',
+    default                         => '',
+  }
+
+  $postfix_mysql_package = $::operatingsystem ? {
+    /Ubuntu|Debian/                 => 'postfix-mysql',
+    default                         => '',
+  }
+
+  $postfix_cdb_package = $::operatingsystem ? {
+    /Ubuntu|Debian/                 => 'postfix-cdb',
+    default                         => '',
+  }
+
+  $postfix_pgsql_package = $::operatingsystem ? {
+    /Ubuntu|Debian/                 => 'postfix-pgsql',
+    default                         => '',
+  }
+
   $postfix_package_provider = $::operatingsystem ? {
     'Solaris'                       => 'pkgutil',
     /(?i:CentOS|RedHat|Scientific)/ => 'yum',
