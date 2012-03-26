@@ -12,7 +12,6 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class postfix ( $root_alias,
-                $ldap_enabled = true,
                 $mailname = $::fqdn,
                 $postmaster = $root_alias) {
 
