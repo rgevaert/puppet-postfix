@@ -7,12 +7,17 @@ define postfix::main ($value, $ensure = present)
       notify  => Class['postfix::service'],
   }
 
+  $context = $value ? {
+    ''      => "clear ${name}",
+    default => "set ${name} \'${value}\'",
+  }
+
   case $ensure {
     present: {
       augeas {
         "enable ${name}":
           context => '/files/etc/postfix/main.cf',
-          changes => "set ${name} '${value}'",
+          changes => $context,
       }
     }
 
