@@ -21,6 +21,7 @@ define postfix::map ( $ensure   = present,
 
   $postmap_command = $maptype ?  {
     'none'      => 'echo no update necessary',
+    'pcre'      => 'echo no update necessary',
     default     => "postmap ${maptype}:/etc/postfix/${mapname}",
   }
 
