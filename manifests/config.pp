@@ -7,11 +7,11 @@ class postfix::config
   }
 
   file {
-    $postfix::params::data_directory:
+    $postfix::data_directory:
       ensure => directory,
-      owner  => $postfix::params::daemon_uid,
-      group  => $postfix::params::daemon_gid;
-    $postfix::params::aliases_database:
+      owner  => $postfix::daemon_uid,
+      group  => $postfix::daemon_gid;
+    $postfix::aliases_database:
       mode   => '0644',
       owner  => root,
       group  => root;

@@ -1,60 +1,60 @@
 class postfix::install
 {
   package {
-    $postfix::params::postfix_package:
+    $postfix::postfix_package:
       ensure   => installed,
-      provider => $postfix::params::postfix_package_provider;
+      provider => $postfix::postfix_package_provider;
   }
 
-  if($postfix::params::postfix_ldap_package != '')
+  if($postfix::postfix_ldap_package != '')
   {
     package {
-      $postfix::params::postfix_ldap_package:
+      $postfix::postfix_ldap_package:
         ensure   => installed,
-        provider => $postfix::params::postfix_package_provider;
+        provider => $postfix::postfix_package_provider;
     }
   }
 
-  if($postfix::params::postfix_mysql_package != '')
+  if($postfix::postfix_mysql_package != '')
   {
     package {
-      $postfix::params::postfix_mysql_package:
+      $postfix::postfix_mysql_package:
         ensure   => installed,
-        provider => $postfix::params::postfix_package_provider;
+        provider => $postfix::postfix_package_provider;
     }
   }
 
-  if($postfix::params::postfix_cdb_package != '')
+  if($postfix::postfix_cdb_package != '')
   {
     package {
-      $postfix::params::postfix_cdb_package:
+      $postfix::postfix_cdb_package:
         ensure   => installed,
-        provider => $postfix::params::postfix_package_provider;
+        provider => $postfix::postfix_package_provider;
     }
   }
 
-  if($postfix::params::postfix_pcre_package != '')
+  if($postfix::postfix_pcre_package != '')
   {
     package {
-      $postfix::params::postfix_pcre_package:
+      $postfix::postfix_pcre_package:
         ensure   => installed,
-        provider => $postfix::params::postfix_package_provider;
+        provider => $postfix::postfix_package_provider;
     }
   }
 
-  if($postfix::params::postfix_pgsql_package != '')
+  if($postfix::postfix_pgsql_package != '')
   {
     package {
-      $postfix::params::postfix_pgsql_package:
+      $postfix::postfix_pgsql_package:
         ensure   => installed,
-        provider => $postfix::params::postfix_package_provider;
+        provider => $postfix::postfix_package_provider;
     }
   }
 
-  if($postfix::params::mailx_package != '')
+  if($postfix::mailx_package != '')
   {
     package {
-      $postfix::params::mailx_package:
+      $postfix::mailx_package:
         ensure => installed;
     }
   }
