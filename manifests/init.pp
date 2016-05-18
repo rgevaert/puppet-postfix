@@ -37,9 +37,9 @@ class postfix (
   $aliases_database         = $postfix::params::aliases_database
 ) inherits postfix::params {
 
-    class{'postfix::preinstall':} ~>
-    class{'postfix::install':} ~>
-    class{'postfix::config':} ~>
-    class{'postfix::service':}
+    class{'::postfix::preinstall':} ~>
+    class{'::postfix::install':} ~>
+    class{'::postfix::config':} ~>
+    class{'::postfix::service':}
 
 }

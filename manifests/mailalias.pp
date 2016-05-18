@@ -1,3 +1,6 @@
+# Define postfix::mailalias
+# Configure an mail alias
+#
 define postfix::mailalias ($recipient, $ensure = 'present')
 {
   mailalias {

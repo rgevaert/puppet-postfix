@@ -1,3 +1,5 @@
+# Class: postfix::preinstall::solaris
+# Specific solaris steps to remove Sendmail
 class postfix::preinstall::solaris
 {
 
@@ -15,7 +17,7 @@ class postfix::preinstall::solaris
   }
 
   Exec {
-    path => '/usr/sbin/:/usr/bin'
+    path => '/usr/sbin/:/usr/bin',
   }
   exec {
     'disable_sendmail_root':

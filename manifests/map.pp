@@ -1,3 +1,6 @@
+# Define postfix::map
+# Set up a postfix map
+#
 define postfix::map ( $ensure   = present,
                       $maptype  = 'none',
                       $template = "${name}.erb")
@@ -5,8 +8,8 @@ define postfix::map ( $ensure   = present,
   $mapname = $name
 
   $map_notify = $ensure ? {
-    present => Exec["postmap /etc/postfix/${mapname}"],
-    absent  => undef,
+    'present' => Exec["postmap /etc/postfix/${mapname}"],
+    'absent'  => undef,
   }
 
   file {

@@ -1,3 +1,5 @@
+# Class: postfix::config
+#
 class postfix::config
 {
 
@@ -31,7 +33,7 @@ class postfix::config
   }
 
   case $::operatingsystem {
-    /(?i:Debian|Ubuntu)/: { include postfix::config::debian }
+    /(?i:Debian|Ubuntu)/: { include ::postfix::config::debian }
     default:               { }
   }
 

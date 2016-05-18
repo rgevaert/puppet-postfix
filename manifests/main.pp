@@ -1,3 +1,6 @@
+# Define postfix::main
+# Set a value in main.cf
+#
 define postfix::main ($value, $ensure = present)
 {
 
@@ -13,7 +16,7 @@ define postfix::main ($value, $ensure = present)
   }
 
   case $ensure {
-    present: {
+    'present': {
       augeas {
         "enable ${name}":
           context => '/files/etc/postfix/main.cf',
@@ -21,7 +24,7 @@ define postfix::main ($value, $ensure = present)
       }
     }
 
-    absent: {
+    'absent': {
       augeas {
         "disable postfix ${name}":
           context => '/files/etc/postfix/main.cf',

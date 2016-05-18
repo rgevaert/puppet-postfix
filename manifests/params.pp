@@ -1,3 +1,7 @@
+# Class: postfix::params
+#
+# Defaults for postfix module
+#
 class postfix::params
 {
   $postfix_package = $::operatingsystem ? {

@@ -1,4 +1,6 @@
-
+# Define: postfix::master
+# Set a config line in master.cf
+#
 define postfix::master ($type,
                         $private      = '-',
                         $unprivileged = '-',

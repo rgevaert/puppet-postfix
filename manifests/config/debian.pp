@@ -1,3 +1,5 @@
+# Class: postfix::config::debian
+#
 class postfix::config::debian
 {
   file {
