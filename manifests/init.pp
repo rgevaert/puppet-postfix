@@ -20,8 +20,7 @@
 class postfix (
   $root_alias,
   $mailname                 = $::fqdn,
-  $postmaster               = $root_alias,
-
+  $postmaster               = 'root',
   $postfix_package          = $postfix::params::postfix_package,
   $postfix_ldap_package     = $postfix::params::postfix_ldap_package,
   $postfix_pcre_package     = $postfix::params::postfix_pcre_package,

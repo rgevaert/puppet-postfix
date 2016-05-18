@@ -1,0 +1,48 @@
+{
+  "name": "rgevaert-postfix",
+  "version": "0.1.0",
+  "author": "rgevaert",
+  "summary": "Puppet module to config postfix",
+  "license": "GNU GPL v3 or later",
+  "source": "https://github.github.com/rgevaert/puppet-postfix.git",
+  "project_page": "https://github.github.com/rgevaert/puppet-postfix",
+  "issues_url": "https://github.github.com/rgevaert/puppet-postfix/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Solaris",
+      "operatingsystemrelease": [
+        "10"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04",
+        "16.04"
+      ]
+    }
+  ]
+}
