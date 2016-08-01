@@ -13,9 +13,9 @@ define postfix::master ($type,
 
   # Augeas older than 0.10.0 has a typo in the postfix master lense
   $unpriv_lens = versioncmp($::augeasversion, '0.10.0') ? {
-    '-1'      => 'unpriviliged',
-    '0'       => 'unprivileged',
-    '1'       => 'unprivileged',
+    -1 => 'unpriviliged',
+    0  => 'unprivileged',
+    1  => 'unprivileged',
   }
 
   if(versioncmp($::facterversion, '1.6') == -1 ) {
