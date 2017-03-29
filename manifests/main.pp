@@ -6,7 +6,7 @@ define postfix::main ($value, $ensure = present)
 
   Augeas {
       context => '/files/etc/postfix/main.cf',
-      require => Class['postfix'],
+      require => Class['postfix::install'],
       notify  => Class['postfix::service'],
   }
 
