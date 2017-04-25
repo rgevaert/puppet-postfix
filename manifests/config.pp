@@ -15,15 +15,14 @@ class postfix::config
       group  => $postfix::daemon_gid;
     $postfix::aliases_database:
       mode   => '0644',
-      owner  => root,
-      group  => root;
+      owner  => 'root',
+      group  => 'root';
     '/etc/postfix':
       ensure => directory,
       mode   => '0755',
-      owner  => root,
+      owner  => 'root',
       group  => $group_name;
   }
-
 
   postfix::mailalias {
     'root':
@@ -36,11 +35,4 @@ class postfix::config
     /(?i:Debian|Ubuntu)/: { include ::postfix::config::debian }
     default:               { }
   }
-
-  exec {
-    'newaliases':
-      command      => '/usr/bin/newaliases',
-      refreshonly  => true;
-  }
-
 }

@@ -1,0 +1,5 @@
+fixtures:
+    symlinks:
+     postfix: "#{source_dir}"
+    repositories:
+    forge_modules:
