@@ -3,12 +3,11 @@
 #
 define postfix::mailalias ($recipient, $ensure = 'present')
 {
-  mailalias {
-    $name:
-      ensure    => $ensure,
-      recipient => $recipient,
-      target    => $postfix::aliases_database,
-      notify    => Exec["newaliases-${recipient}"],
+  mailalias { $name:
+    ensure    => $ensure,
+    recipient => $recipient,
+    target    => $postfix::aliases_database,
+    notify    => Exec["newaliases-${recipient}-${name}"],
   }
 
   exec { "newaliases-${recipient}-${name}":
