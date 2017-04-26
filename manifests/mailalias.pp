@@ -11,7 +11,7 @@ define postfix::mailalias ($recipient, $ensure = 'present')
       notify    => Exec["newaliases-${recipient}"],
   }
 
-  exec { "newaliases-${recipient}":
+  exec { "newaliases-${recipient}-${name}":
     command      => '/usr/bin/newaliases',
     refreshonly  => true;
   }
