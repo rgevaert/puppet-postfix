@@ -2,6 +2,7 @@
 # Set a config line in master.cf
 #
 define postfix::master ($type,
+                        $ensure       = 'present',
                         $private      = '-',
                         $unprivileged = '-',
                         $chroot       = '-',
@@ -22,18 +23,22 @@ define postfix::master ($type,
     fail('facter version < 1.6 not supported')
   }
 
-  augeas {
-    $name:
-        context => '/files/etc/postfix/master.cf',
-        changes => [
-          "set ${service}/type ${type}",
-          "set ${service}/private ${private}",
-          "set ${service}/${unpriv_lens} ${unprivileged}",
-          "set ${service}/chroot ${chroot}",
-          "set ${service}/wakeup ${wakeup}",
-          "set ${service}/limit ${limit}",
-          "set ${service}/command '${command}'",
-        ],
-        notify  => Class['postfix::service'],
+  $changes = $ensure ? {
+    'present' => [
+          "set type ${type}",
+          "set private ${private}",
+          "set ${unpriv_lens} ${unprivileged}",
+          "set chroot ${chroot}",
+          "set wakeup ${wakeup}",
+          "set limit ${limit}",
+          "set command '${command}'", ],
+    'absent' => [ "rm ."],
   }
+
+  augeas {
+    "${service}-${type}":
+        context => "/files/etc/postfix/master.cf/$service[ type = '$type' ]",
+        changes => $changes,
+  }
+
 }
